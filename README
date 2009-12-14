@@ -1,0 +1,58 @@
+
+The dataset is a PostgreSQL dump file, compressed with 7zip.
+
+
+The schema is as follows:
+
+
+CREATE TABLE author_repos (
+    id integer NOT NULL,
+    repo_id integer NOT NULL,
+    author_id integer NOT NULL,
+    count integer                                       -- Total # commits
+);
+
+
+CREATE TABLE authors (
+    id integer NOT NULL,
+    name character varying(100) NOT NULL                -- Author email
+);
+
+
+CREATE TABLE commits (
+    id integer NOT NULL,
+    repo_id integer NOT NULL,
+    author_id integer NOT NULL,
+    age integer NOT NULL,                               -- Commit age in seconds, with 0 being the time of the first commit to the project
+    message text,
+    deletions integer,                                  -- lines deleted
+    insertions integer,                                 -- lines inserted
+    lines integer,                                      -- deletions + insertions
+    files integer,                                      -- Number of files touched
+    hash character varying(42)                          -- SHA hash
+);
+
+
+CREATE TABLE extensions (
+    id integer NOT NULL,
+    repo_id integer NOT NULL,
+    ext character varying(6) NOT NULL,                  -- file extension
+    count integer                                       -- total number of lines
+);
+
+
+CREATE TABLE repos (
+    id integer NOT NULL,
+    "user" character varying(100) NOT NULL,
+    name character varying(100) NOT NULL,
+    watchers integer,                                   -- github watchers
+    forks integer,                                      -- github forks
+    "primary" character varying(6),                     -- primary language, calculated from extensions
+    start integer,                                      -- first commit, seconds since epoch
+    "end" integer,                                      -- last commit, seconds since epoch
+    commitcount integer,                                -- total commits
+    authorcount integer,                                -- total authors
+    insertions integer,                                 -- total lines inserted 
+    deletions integer,                                  -- total lines deleted
+    lines integer                                       -- insertions + deletions
+);
