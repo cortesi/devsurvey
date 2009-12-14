@@ -1,6 +1,32 @@
 
 The dataset is a PostgreSQL dump file, compressed with 7zip.
 
+Finding the primary language for each project was tricky, and the results are
+inexact. Language detection was done purely on the basis of file extension. The
+map between the strings in the "primary" field and languages is as follows:
+
+    ActionScript:       "as"
+    C++:                "cpp"
+    C:                  "c"
+    Clojure:            "clj"
+    C#:                 "cs"
+    Erlang:             "erl"
+    Go:                 "go"
+    Haskell:            "hs"
+    Java:               "java"
+    Javscript:          "js"
+    Lisp:               "lisp"
+    Lua:                "lua"
+    Objective C:        "m"
+    Objective J:        "j"
+    PHP:                "php"
+    Ruby:               "rb"
+    Perl:               "pl"
+    Python:             "py"
+    Scala:              "scala"
+    
+
+
 
 The schema is as follows:
 
